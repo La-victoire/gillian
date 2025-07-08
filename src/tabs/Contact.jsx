@@ -3,16 +3,19 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/componen
 import { Input } from '@/components/components/ui/input'
 import { Label } from '@/components/components/ui/label'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/components/ui/select'
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { FAQ, projectTypes } from '../projectdata'
 import { Textarea } from '@/components/components/ui/textarea'
 import { Button } from '@/components/components/ui/button'
 import { ArrowRight, Calendar, Clock, Mail, MapPin, MessageSquare, Phone, Zap } from 'lucide-react'
 import { FaLinkedinIn, FaTwitter } from 'react-icons/fa'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/components/ui/avatar'
-
+import emailjs from "@emailjs/browser"
+import { Link } from 'react-router-dom'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 const Contact = () => {
-    const process = [
+  const process = [
     {
       step: "01",
       title: "Discovery Call",
@@ -32,6 +35,92 @@ const Contact = () => {
       icon: <Calendar className="h-6 w-6" />,
     },
   ]
+  const [projectType, setProjectType] = useState("")
+  const [buttonText, setButtonText] = useState("Send Project Details")
+  const [buttonDisabled, setButtonDisabled] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const formRef = useRef()
+
+      useGSAP(() => {
+        const projectAnimate = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#faq',
+          start: 'top center',
+          end: 'bottom bottom',
+          scrub: true,
+        }
+      })
+  
+      projectAnimate.from("#card", 
+        {
+          xPercent: 200,
+          opacity: 0,
+          stagger: 0.5,
+          ease: "expo.out",
+          duration: 1.5
+        }
+      )
+    },[])
+
+  const sendEmailForm = (e) => {
+    e.preventDefault()
+
+    setButtonText("Sending...")
+    setButtonDisabled(true)
+    setSuccess(true)
+    emailjs.sendForm(
+      "Gillian_brendan","gillian_reply",formRef.current,"RBfDT3SKhRqcUd8SR"
+      
+    ).then(() => {
+      setButtonText("Sent!")
+      setSuccess(true)
+      setProjectType("")
+    },
+  (error) => {
+    console.error(error.text)
+    alert("Failed to send message.")
+  }).finally(() => {
+    setTimeout(() => {
+      setButtonText("Send Project Details")
+      setButtonDisabled(false)
+    }, 3000)
+    })
+  }
+
+  if (success) {
+     return(
+        <div className='min-h-screen bg-background flex items-center justify-center px-6'>
+          <div className='text-center max-w-2xl mx-auto'>
+            <div className='text-6xl chillax mb-6'>
+              🚀
+            </div>
+            <h1 className='text-4xl font-bold text-foreground mb-6'>Thank You!</h1>
+            <p className="text-xl text-muted-foreground mb-8">
+              Your project inquiry has been received.
+            </p>
+            <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+              <Link to={"/my-work"}>
+              <Button 
+               size="lg"
+               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-800 hover:to-purple-800">
+                View My Work <ArrowRight />              
+              </Button>
+              </Link>
+
+              <Link to={"/"}>
+              <Button 
+              size="lg"
+              variant="outline"
+              >
+                Back to Home             
+              </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )
+  }
+
   return (
     <>
     <section className='flex flex-col gap-5 justify-center items-center p-10 lg:px-40'>
@@ -51,56 +140,70 @@ const Contact = () => {
         <CardHeader className='chillax text-2xl'>
           Start Your Project
         </CardHeader>
-        <CardContent className='flex flex-col gap-5'>
-          <div className='flex gap-5 md:flex-row flex-col w-full'>
-            <div className='md:w-1/2 flex flex-col gap-2'>
-              <Label htmlFor="text">Full Name*</Label>
-              <Input type="text" placeholder="John Smith"/>
+        <form 
+          ref={formRef} 
+          onSubmit={sendEmailForm}>
+          <CardContent className='flex flex-col gap-5'>
+            <div className='flex gap-5 md:flex-row flex-col w-full'>
+              <div className='md:w-1/2 flex flex-col gap-2'>
+                <Label htmlFor="text">Full Name*</Label>
+                <Input name="user_name" type="text" placeholder="John Smith" required/>
+              </div>
+              <div className='md:w-1/2 flex flex-col gap-2'>
+                <Label htmlFor="email">Email Address*</Label>
+                <Input name="user_email" type="email" placeholder="Smith@company.com" required/>
+              </div>
             </div>
-            <div className='md:w-1/2 flex flex-col gap-2'>
-              <Label htmlFor="email">Email Address*</Label>
-              <Input type="email" placeholder="Smith@company.com"/>
+            <div className='flex flex-col gap-2'>
+              <Label htmlFor="text">Company Name</Label>
+              <Input name="company" type="text" placeholder="Your Company inc"/>
             </div>
-          </div>
-          <div className='flex flex-col gap-2'>
-            <Label htmlFor="text">Company Name</Label>
-            <Input type="text" placeholder="Your Company inc"/>
-          </div>
-          <div className='flex flex-col gap-2'>
-            <Label htmlFor="name">Project Type*</Label>
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Select Project Type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>Project Type</SelectLabel>
-                  {projectTypes.map((type) => (
-                    <SelectItem value={type}>{type}</SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className='flex gap-5 md:flex-row flex-col w-full'>
-            <div className='md:w-1/2 flex flex-col gap-2'>
-              <Label htmlFor="text">Budget Range</Label>
-              <Input type="text" placeholder="Amount Range"/>
+            <div className='flex flex-col gap-2'>
+              <Label htmlFor="project_type">Project Type*</Label>
+              <Select 
+                name="project_type"
+                value={projectType}
+                onValueChange={setProjectType}
+                required
+                >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select Project Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Project Type</SelectLabel>
+                    {projectTypes.map((type) => (
+                      <SelectItem key={type} value={type}>{type}</SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
-            <div className='md:w-1/2 flex flex-col gap-2'>
-              <Label htmlFor="text">Desired Timeline</Label>
-              <Input type="text" placeholder="e.g, 6-8 weeks"/>
+            <div className='flex gap-5 md:flex-row flex-col w-full'>
+              <div className='md:w-1/2 flex flex-col gap-2'>
+                <Label htmlFor="text">Budget Range</Label>
+                <Input name="budget" type="text" placeholder="Amount Range"/>
+              </div>
+              <div className='md:w-1/2 flex flex-col gap-2'>
+                <Label htmlFor="text">Desired Timeline</Label>
+                <Input name="timeline" type="text" placeholder="e.g, 6-8 weeks"/>
+              </div>
             </div>
-          </div>
-          <div className='flex flex-col gap-2'>
-            <Label htmlFor="text">Project Details*</Label>
-            <Textarea placeholder="Tell me about your project goals current challenges, and what success looks like for you..." />
-          </div>
-          <Button variant='outline' className='border-0 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white chillax'>
-            Send Project Details
-            <ArrowRight />
-          </Button>
-        </CardContent>
+            <div className='flex flex-col gap-2'>
+              <Label htmlFor="text">Project Details*</Label>
+              <Textarea name="message" placeholder="Tell me about your project goals current challenges, and what success looks like for you..." required />
+            </div>
+            <Button 
+             type="submit"
+             disabled={buttonDisabled}
+             variant='outline' 
+             className='border-0 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white chillax'
+             >
+              {buttonText}
+              <ArrowRight />
+            </Button>
+          </CardContent>
+        </form>
       </Card>
       <Card className='shadow-xl bg-muted'>
         <CardHeader className="chillax text-2xl">
@@ -139,12 +242,16 @@ const Contact = () => {
         <CardFooter className='flex flex-col gap-3 ml-5 items-start text-muted-foreground'>
           <p>Follow Me</p>
           <div className='flex gap-5'>
-            <Badge variant="outline" className='border-0 hover:shadow-lg hover:cursor-pointer active:translate-2 duration-500 bg-white/50 w-10 h-10 rounded-2xl'>  
-            <FaLinkedinIn />
-            </Badge>
-            <Badge variant="outline" className='border-0 hover:shadow-lg hover:cursor-pointer active:translate-2 duration-500  bg-white/50 w-10 h-10 rounded-2xl'>
-            <FaTwitter />
-            </Badge>
+            <a href="https://www.linkedin.com/in/gillian-brendan-80095b199?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
+              <Badge variant="outline" className='border-0 hover:shadow-lg hover:cursor-pointer active:translate-2 duration-500 bg-white/50 w-10 h-10 rounded-2xl'>  
+              <FaLinkedinIn />
+              </Badge>
+            </a>
+            <a href="https://x.com/zoeyglams?t=L5GljY3uNo9vuKQNRV8AbQ&s=09" target="_blank" rel="noopener noreferrer">
+              <Badge variant="outline" className='border-0 hover:shadow-lg hover:cursor-pointer active:translate-2 duration-500  bg-white/50 w-10 h-10 rounded-2xl'>
+              <FaTwitter />
+              </Badge>
+            </a>
           </div>
         </CardFooter>
       </Card>
@@ -154,7 +261,7 @@ const Contact = () => {
         </CardHeader>
         <CardContent className='flex flex-col gap-5'>
           {process.map(({step,description,title,icon})=> (
-            <div className="flex gap-5 items-center">
+            <div key={title} className="flex gap-5 items-center">
               <Avatar>
                 <AvatarFallback className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">{step}</AvatarFallback>
               </Avatar>
@@ -172,9 +279,9 @@ const Contact = () => {
         <h2 className="chillax mb-5 text-5xl">Frequently Asked Questions</h2>
         <p className="text-muted-foreground telma-light">Common questions about working together</p>
       </div>
-      <div className="flex flex-col gap-5">
+      <div id='faq' className="flex flex-col gap-5">
         {FAQ.map(({question,answer}) => (
-          <Card className="shadow-xl">
+          <Card key={question} id='card' className="shadow-xl">
             <CardHeader className='text-xl -mb-5 chillax'>{question}</CardHeader>
             <CardContent>{answer}</CardContent>
           </Card>

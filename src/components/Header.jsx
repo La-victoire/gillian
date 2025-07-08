@@ -6,7 +6,6 @@ import { Button } from './components/ui/button'
 const Header = () => {
 
   const location = useLocation()
-  console.log(location.pathname)
   const tabs = [
     {Name:"Home", path:"/"},
     {Name:"About", path:"/about-me"},
@@ -20,14 +19,17 @@ const Header = () => {
         <h1 className=' synonym flex md:justify-center md:text-2xl'>Gillian Nsisong Brendan</h1>
         <div className=' hidden md:flex gap-15 '>
           {tabs.map(({Name,path}) => (
-          <Link className={`hover:-translate-y-1 duration-300 hover:text-white ${location.pathname === path ? "border-b border-white/80" : "text-black"}`} to={path}>{Name}</Link>
+          <Link key={Name} className={`hover:-translate-y-1 duration-300 hover:text-white ${location.pathname === path ? "border-b border-white/80" : "text-black"}`} to={path}>{Name}</Link>
           ))}
         </div>
         <a href='#footer' className='scroll-smooth md:hidden'>
           <MenuSquareIcon />
         </a>
         <div className='hidden lg:flex'>
-          <Button className='bg-[#AE7DAC]'>Let's Talk</Button>
+          <a href="http://wa.link/uik3w6" 
+            target="_blank" rel="noopener noreferrer">
+            <Button className='bg-[#AE7DAC]'>Let's Talk</Button>
+         </a>
         </div>
       </nav>
     </>

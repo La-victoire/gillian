@@ -5,6 +5,7 @@ import React from 'react'
 import { Button } from './components/ui/button'
 import { Card, CardContent } from './components/ui/card'
 import { services } from '../projectdata'
+import { Link } from 'react-router-dom'
 const Hero = () => {
   
   useGSAP(() => {
@@ -85,7 +86,7 @@ const Hero = () => {
       <div className='flex flex-col'>
         <div className='flex justify-between'>
           <div className='first_image hidden lg:flex opacity-20 ml-20 rounded-full size-21' alt="gilly" />
-          <div id='hero-text' className='text-4xl w-full lg:w-1/2 flex justify-center items-center chillax font-bold'>
+          <div id='hero-text' className='md:text-4xl text-2xl w-full lg:w-1/2 flex justify-center items-center chillax font-bold'>
             <h1 id='profession' className='flex flex-wrap'>Freelance - Copywriter</h1>
           </div>
         </div>
@@ -96,9 +97,18 @@ const Hero = () => {
               <h1 id='prof-text' className='text-6xl md:text-8xl lg:text-5xl chillax flex gap-2 items-center justify-center flex-wrap w-full md:w-3/4'><p>Words That</p>  <span className="bg-gradient-to-r from-blue-600 to-purple-600  bg-clip-text text-transparent"> Convert</span>  </h1>
               <div id='subtitle' className='text-2xl  synonym text-foreground mx-auto flex flex-col flex-wrap w-full lg:w-4/5'>
                 <h2 className=' md:px-[50px] lg:px-0 text-center'>Copywriter & Brand consultant helping businesses craft compelling narratives<br />  that drive results.</h2>
-                <div className='flex justify-center items-center sm:gap-15 lg:gap-5 text-bold mt-15'>
-                  <Button variant='outline' className='rounded-lg text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-2 px-5'>View My Work</Button>
-                  <Button variant='outline' className='rounded-lg border bg-transparent hover:bg-[#000010] hover:text-white px-4 py-2'>Get in Touch</Button>
+                <div className='flex justify-center items-center gap-5 text-bold lg:mt-2  mt-15'>
+                  <Link to='/about-me'>
+                    <Button 
+                    variant='outline' 
+                    className='rounded-lg text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-2 px-5'
+                    >
+                      More Info
+                    </Button>
+                  </Link>
+                  <Link to={"/contact-me"}>
+                    <Button variant='outline' className='rounded-lg border bg-transparent hover:bg-[#000010] hover:text-white px-4 py-2'>Get in Touch</Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -107,7 +117,7 @@ const Hero = () => {
             <div className='rounded-r-full rounded-tl-full w-full h-full top-27 relative first_image'></div>
             <img  src="/images/removebg-1.png" className='absolute  -ml-20' alt="geelyann--img" />
             </div> 
-            <img src="/images/removebg-4.png" className='absolute lg:flex hidden bottom-2 right-11 size-48' alt="squiggly"/>
+            <img src="/images/removebg-4.png" className='absolute lg:flex hidden bottom-32 right-11 size-48' alt="squiggly"/>
         </div>
       </div>
     </main>
@@ -166,15 +176,15 @@ const Hero = () => {
                 src={`images/${media}.jpg`} alt="image" />
               )}
               <CardContent className='text-[#444] ml-5 flex flex-col gap-5'>
-              <h2 className='text-5xl text-bold'>{title}</h2>
+              <h2 className='text-5xl chillax text-bold'>{title}</h2>
               <p className='text-xl text-muted-foreground flex flex-wrap w-full'> 
                 {description}
               </p>
-              <div>
+              <Link to="/my-work">
                 <Button variant='outline' className='p-3 text-black opacity-0 group-hover:opacity-90 mt-10 group-hover:mt-5 duration-200 rounded-lg '>
                   See my work
                 </Button>
-              </div>
+              </Link>
               </CardContent>
              </Card>
               ))}

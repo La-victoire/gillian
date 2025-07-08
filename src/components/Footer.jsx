@@ -36,7 +36,12 @@ const Footer = () => {
 
         </div>
       </div>
-      <div className='flex flex-wrap text-black justify-center items-center'>&copy; 2025 Developed By La_Victoire. All Rights Reserved</div>
+      <a 
+       href='https://la-victoireportfolio.vercel.app/'
+       className='flex flex-wrap text-black justify-center items-center'
+       >
+        &copy; 2025 Developed By La_Victoire. All Rights Reserved
+      </a>
     </footer>
     </>
   )

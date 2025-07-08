@@ -4,8 +4,33 @@ import { Card, CardContent, CardHeader } from '@/components/components/ui/card'
 import { ArrowRight, Download } from 'lucide-react'
 import React from 'react'
 import { careerTimeline, myDrive } from '../projectdata.js'
+import { Link } from 'react-router-dom'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 const About = () => {
+
+     useGSAP(() => {
+       const projectAnimate = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#career',
+          start: 'top center',
+          end: 'bottom bottom',
+          scrub: true,
+        }
+      })
+  
+      projectAnimate.from("#card", 
+        {
+          xPercent: 200,
+          opacity: 0,
+          stagger: 0.5,
+          ease: "expo.out",
+          duration: 1.5
+        }
+      )
+    },[])
+
   return (
     <>
     <main className='flex flex-col gap-5 p-10 bg-accent'>
@@ -21,8 +46,12 @@ const About = () => {
         of experience helping businesses find their voice and multiply their revenue through the power of persuasive storytelling
       </p>
       <div className='flex gap-5'>
-        <Button className='text-white bg-gradient-to-r from-blue-600 to-purple-600'> View My Work </Button>
-        <Button variant='outline'> <Download /> Download Resume</Button>
+        <Link to="/my-work">
+          <Button className='text-white bg-gradient-to-r from-blue-600 to-purple-600'> View My Work </Button>
+        </Link>
+        <a href='src/assets/Gillian copycv.pdf' download="Gillian_Brendan.pdf">
+          <Button variant='outline'> <Download /> Download Resume</Button>
+        </a>
       </div>
       <div className="md:w-1/2 h-full">
         <img 
@@ -71,16 +100,16 @@ const About = () => {
       </p>
       </div>
     </section>
-    <section className='p-10 my-10 flex flex-col bg-accent text-muted-foreground justify-center items-center gap-5'>
+    <section id="career" className='p-10 my-10 flex flex-col bg-accent text-muted-foreground justify-center items-center gap-5'>
       <h2 className='text-black md:text-7xl text-center text-3xl chillax'>Professional Journey</h2>
       <h3 className='telma-light'>Key milestones that shaped my expertise</h3>
       <div className='mt-5'> 
         {careerTimeline.map(({summary,company,highlights,title,year}) => (
-          <div className='flex '>
+          <div key={title} className='flex'>
             <div className='flex flex-col'>
               <div className='p-2 bg-[#AE7DAC] relative -left-1.5 -top-5 rounded-full'/>
             </div>
-            <Card className='mb-10'>
+            <Card id="card" className='mb-10'>
               <CardHeader className='flex md:flex-row flex-col gap-2 md:gap-5 chillax'>
                 <Badge className='bg-[#ae7dac]/70 border-0'>{year}</Badge>
                 <h4>{title}</h4>
@@ -90,7 +119,7 @@ const About = () => {
                 <p>{summary}</p>
                 <div>
                   {highlights.map((list) => (
-                    <li>{list}</li>
+                    <li key={list}>{list}</li>
                   ))}
                 </div>
               </CardContent>
@@ -110,7 +139,7 @@ const About = () => {
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-5 pb-20 px-15 text-center'>
         {myDrive.map(({title,description,logo})=> (
-          <Card className='shadow-xl'>
+          <Card key={title} className='shadow-xl'>
             <CardHeader>
               <p className='text-3xl mb-3'>{logo}</p>
               <h3 className='text-xl chillax'>{title}</h3>
@@ -122,7 +151,7 @@ const About = () => {
         ))}
       </div>
     </section>
-    <section className='bg-accent text-muted-foreground py-20 justify-center items-center flex flex-col gap-5'>
+    <section className='bg-accent text-center text-muted-foreground py-20 justify-center items-center flex flex-col gap-5'>
       <h2 className='md:text-6xl text-4xl text-black chillax'>
         Ready to Work Together?
       </h2>
@@ -130,13 +159,17 @@ const About = () => {
         Let's discuss how strategic copywriting can transform your business
       </p>
       <div className='flex gap-5'>
-        <Button variant='outline' className='flex text-white bg-gradient-to-r from-blue-600 to-purple-600'>
-          Start Your Project 
-          <ArrowRight />
-        </Button>
-        <Button variant="outline">
-          View My Work
-        </Button>
+        <Link to={"/contact-me"}>
+          <Button variant='outline' className='flex text-white bg-gradient-to-r from-blue-600 to-purple-600'>
+            Start Your Project 
+            <ArrowRight />
+          </Button>
+        </Link>
+        <Link to={"/my-work"}>
+          <Button variant="outline">
+            View My Work
+          </Button>
+        </Link>
       </div>
     </section>
     </>

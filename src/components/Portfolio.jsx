@@ -3,16 +3,17 @@ import { projects } from '../projectdata'
 import { Button } from './components/ui/button'
 import { Badge } from './components/ui/badge'
 import {Card, CardContent } from './components/ui/card'
-import { ArrowRight, Mail, Phone, Settings2, Star } from 'lucide-react'
+import { ArrowRight, Mail, Phone, Quote, Settings2, Star } from 'lucide-react'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import { FaLinkedin } from "react-icons/fa";
+import { Link } from 'react-router-dom'
 
 const Portfolio = () => {
   const filteredProjects = projects.filter((project) => 'testimonial' in project)
   return (
     <>
-    <section className='-mt-[500px] px-5'>
+    <section className='-mt-[800px] lg:-mt-[500px] px-5'>
       <div> 
         <h1 className='md:text-8xl text-5xl md:mt-15 flex chillax justify-center items-center'>
           Featured Work
@@ -27,20 +28,20 @@ const Portfolio = () => {
                 <div key={project.id} className='group lg:h-[75dvh] gap-2 flex flex-col md:flex-row'>
                   <div  className=' md:w-1/2 flex flex-col flex-wrap mt-6 gap-5 p-5 h-full rounded-lg'>
                     <Badge variant={'outline'} className='text-base'>{project.category}</Badge>
-                    <h2 className='text-5xl  '>{project.title}</h2>
+                    <h2 className='text-5xl chillax '>{project.title}</h2>
                     <p className='text-xl'> {project.description}</p>
                     <div>{project.tags.map((tag)=> (
-                      <Badge className='mr-2'>
+                      <Badge key={tag} className='mr-2'>
                         {tag}
                       </Badge>
                     ))}</div>
                     <h2 className='text-base md:text-xl synonym'> {project.strategy}</h2>
                     <CardContent className='text-base border border-green-300 chillax p-3 rounded-xl md:text-xl bg-green-50 text-green-400 flex flex-col synonym'> <span>Result</span> {project.results}</CardContent>
-                    <div className='flex'>
+                    <Link to={`/my-work/${project.id}`} className='flex'>
                      <Button variant='outline' className='p-3 opacity-0 duration-200 shadow-xl active:mt-1 active:ml-1 active:shadow-none group-hover:opacity-90 chillax rounded-lg '>
                        View Case Study 
                       </Button>
-                    </div>
+                    </Link>
                   </div>
                   <div className='hidden lg:flex md:flex-col md:h-[79dvh]'>
                     <div className='p-2 bg-[#AE7DAC] relative -left-1 -top-4 rounded-full'/>
@@ -49,9 +50,9 @@ const Portfolio = () => {
                   <div className={`${project.color} bg-gradient-to-br rounded-2xl md:w-1/2`}>
                     <div className='text-white p-8 flex flex-col gap-55'>
                       <div className='flex flex-col gap-3'>
-                        <h1 className='text-6xl'>{project.icon}</h1>
+                        <h3 className='text-6xl'>{project.icon}</h3>
                         <p>{project.category}</p>
-                        <h1 className='text-5xl'>{project.title}</h1>
+                        <h3 className='text-5xl chillax'>{project.title}</h3>
                       </div>
                       <div className='lg:flex-row flex flex-col justify-between'>
                         <p>{project.client}</p>
@@ -61,11 +62,11 @@ const Portfolio = () => {
                   </div>
                 </div>
               ))}
-              <div >
+              <Link to="/my-work" >
                 <Button className='px-7 mt-5 bg-gradient-to-r from-blue-600 to-purple-600'>
                   View All Projects
                 </Button>
-              </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -92,7 +93,7 @@ const Portfolio = () => {
         {filteredProjects.map((project)=> (
           <CarouselItem key={project.id} className={'md:basis-1/3 basis-4/5 lg:basis-1/4'}>
             <Card className="px-2 ">
-              <CardContent className={'flex flex-col'}>
+              <CardContent className={'flex flex-col gap-2'}>
                 <div className='flex mb-2 gap-0.5'>
                   <Star color='gold' /> 
                   <Star color='gold' /> 
@@ -100,7 +101,7 @@ const Portfolio = () => {
                   <Star color='gold' /> 
                   <Star color='gold' />
                 </div>
-                <h1 className='text-5xl refin'>"</h1>
+                <Quote className='text-muted-foreground '/>
                 <p className='text-muted-foreground synonym'>"{project.testimonial.quote}"</p>
                 <div className='flex flex-col mt-3 gap-1'>
                   <h1 className='chillax'>{project.testimonial.author}</h1>
@@ -144,11 +145,11 @@ const Portfolio = () => {
         </Card>
        </a>
       </div>
-      <div className="mt-10 flex justify-center items-center">
+      <Link to="/contact-me" className="mt-10 flex justify-center items-center">
         <Button variant={'outline'} className='bg-gradient-to-r from-blue-600 to-violet-700 text-white '>
           Start Your Project <ArrowRight />
         </Button>
-      </div>
+      </Link>
     </section>
     </>
   )

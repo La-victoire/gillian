@@ -1,5 +1,5 @@
 // Portfolio Project Data for Gillian Brendan
-// Designed for reuse across hero section and portfolio page
+// Designed for reuse 
 
 export const services = [
   {
@@ -373,11 +373,11 @@ export const myDrive = [
   }
 ]
 
-export const getProjectById = () => {
+export const getProjectById = (id) => {
   return projects.find((project) => project.id === id)
 }
 
-export const getNextProject = () => {
+export const getNextProject = (currentId) => {
   const currentProject = getProjectById(currentId)
   if (!currentProject?.nextProject) return projects[0]
   return getProjectById(currentProject.nextProject)
