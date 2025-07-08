@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <>
       <nav className='flex h-[8dvh] justify-between px-5 items-center  bg-[#F3DADF] text-lg'>
-        <h1 className=' synonym flex md:justify-center md:text-2xl'>Gillian Nsisong Brendan</h1>
+        <h1 className=' chillax flex md:justify-center md:text-2xl'>Gillian Nsisong Brendan</h1>
         <div className=' hidden md:flex gap-15 '>
           {tabs.map(({Name,path}) => (
           <Link key={Name} className={`hover:-translate-y-1 duration-300 hover:text-white ${location.pathname === path ? "border-b border-white/80" : "text-black"}`} to={path}>{Name}</Link>
