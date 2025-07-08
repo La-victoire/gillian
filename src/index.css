@@ -77,7 +77,7 @@
   font-family: 'Synonym-Regular';
   src: url('src/assets/Synonym-Regular.woff2') format('woff2'),
        url('src/assets/Synonym-Regular.woff') format('woff'),
-       url('src/assets/Synonym-Regular.ttf') format('truetype');
+      url('/src/assets/Synonym-Regular.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
   font-style: normal;
@@ -89,7 +89,8 @@
 @font-face {
   font-family: 'Chillax-Semibold';
   src: url('src/assets/Chillax-Semibold.woff2') format('woff2'),
-       url('src/assets/Chillax-Semibold.woff') format('woff');
+       url('src/assets/Chillax-Semibold.woff') format('woff'),
+       url('/src/assets/Chillax-Semibold.ttf') format('truetype');
   font-weight: 600;
   font-display: swap;
   font-style: normal;
