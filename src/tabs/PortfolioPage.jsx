@@ -106,15 +106,15 @@ const PortfolioPage = () => {
         <div className='flex flex-col bg-gray-300 py-20 px-10 gap-5'>
           <h2 className='text-5xl text-center mb-5 chillax'>Project Highlights</h2>
           <div className='flex gap-5 justify-center items-center md:flex-row flex-col'>
-            <Card className='w-full text-center text-muted-foreground'>
+            <Card className='w-full text-center px-5 text-muted-foreground'>
               <h3 className='text-black -mb-5 text-xl chillax'>{data.results}</h3>
               <p>Primary Result</p>
             </Card>
-            <Card className='w-full text-center text-muted-foreground'>
+            <Card className='w-full text-center px-5 text-muted-foreground'>
               <h3 className='text-black -mb-5 text-xl chillax'>{data.duration}</h3>
               <p>Project Duration</p>
             </Card>
-            <Card className='w-full text-center text-muted-foreground'>
+            <Card className='w-full text-center px-5 text-muted-foreground'>
               <h3 className='text-black -mb-5 text-xl chillax'>{data.category}</h3>
               <p>Service Type</p>
             </Card>
@@ -145,7 +145,7 @@ const PortfolioPage = () => {
           <div>
             <div key={data.id} className='gap-2 flex flex-col-reverse md:flex-row-reverse'>
               <div  className=' md:w-1/2 flex flex-col flex-wrap mt-6 gap-5 p-5 h-full rounded-lg'>
-                <h3 className='text-5xl chillax '>{data.title}</h3>
+                <h3 className='md:text-5xl text-3xl chillax '>{data.title}</h3>
                 <p className='text-xl'> {data.description}</p>
                 <p className='text-base md:text-xl synonym'> {data.strategy}</p>
                 <Link to={`/my-work/${data.id}`} className='flex'>
@@ -158,9 +158,9 @@ const PortfolioPage = () => {
               <div className={`${data.color} bg-gradient-to-br rounded-2xl md:w-1/2`}>
                 <div className='text-white p-8 flex flex-col gap-55'>
                   <div className='flex flex-col gap-3'>
-                    <h3 className='text-6xl'>{data.icon}</h3>
+                    <h3 className='md:text-5xl text-3xl'>{data.icon}</h3>
                     <Badge variant={'outline'} className='text-white bg-white/15 border-0'>{data.category}</Badge>
-                    <h3 className='text-5xl chillax'>{data.title}</h3>
+                    <h3 className='md:text-5xl text-3xl chillax'>{data.title}</h3>
                   </div>
                   <div className='lg:flex-row flex flex-col justify-between'>
                     <p>{data.client}</p>

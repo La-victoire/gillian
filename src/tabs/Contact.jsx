@@ -214,7 +214,7 @@ const Contact = () => {
             <Mail color='blue'/>
             <div>
               <p className='text-sm mb-2 text-muted-foreground'>Email</p>
-              <a href="mailto:gillianbrendan@gmail.com" className='hover:text-blue-600'>gillianbrendan@gmail.com</a>
+              <a href="mailto:Gilliannbrendan@gmail.com" className='hover:text-blue-600'>Gilliannbrendan@gmail.com</a>
             </div>
           </div>
           <div className="flex gap-5 items-center">
@@ -281,10 +281,12 @@ const Contact = () => {
       </div>
       <div id='faq' className="flex flex-col gap-5">
         {FAQ.map(({question,answer}) => (
-          <Card key={question} id='card' className="shadow-xl">
-            <CardHeader className='text-xl -mb-5 chillax'>{question}</CardHeader>
-            <CardContent>{answer}</CardContent>
-          </Card>
+          <div className='relative overflow-hidden'>
+            <Card key={question} id='card' className="shadow-xl">
+              <CardHeader className='text-xl -mb-5 chillax'>{question}</CardHeader>
+              <CardContent>{answer}</CardContent>
+            </Card>
+          </div>
         ))}
       </div>
     </section>

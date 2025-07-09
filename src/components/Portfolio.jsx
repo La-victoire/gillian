@@ -18,7 +18,7 @@ const Portfolio = () => {
         <h1 className='md:text-8xl text-5xl md:mt-15 flex chillax justify-center items-center'>
           Featured Work
         </h1>
-        <h2 className='text-2xl telma-light text-center text-muted-foreground flex justify-center items-center mt-10'>
+        <h2 className='text-2xl text-center text-muted-foreground flex justify-center items-center mt-10'>
           Proof that the right strategies changes everything
         </h2>
         <div className='mt-16'>
@@ -122,11 +122,11 @@ const Portfolio = () => {
         <h2 className='text-2xl text-center synonym text-muted-foreground'>Let's discuss how strategic copywriting can elevate your business</h2>
       </div>
       <div className='flex md:flex-row flex-col gap-5 mt-10 items-center justify-center'>
-       <a href="mailto:gillianbrendan@gmail.com">
+       <a href="mailto:Gilliannbrendan@gmail.com">
         <Card className={"bg-accent w-[70dvw] md:w-[25dvw] flex flex-col gap-2 justify-center items-center rounded-sm"}>
           <Mail color='blue'/>
           <p>Email</p>
-          <p>gillianbrendan@gmail.com</p>
+          <p>Gilliannbrendan@gmail.com</p>
         </Card>
        </a>
        <a href="tel:+2347035747166">

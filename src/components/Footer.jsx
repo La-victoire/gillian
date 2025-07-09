@@ -3,12 +3,13 @@ import { FaLinkedin } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FiInstagram } from "react-icons/fi";
 import { Link } from 'react-router-dom';
+import { ArrowUp, BriefcaseBusiness, ContactRound, Home } from 'lucide-react';
 
 const Footer = () => {
   return (
     <>
-    <footer className='max-h-[40dvh] synonym text-black flex flex-col gap-5 bg-[#F3DADF]'>
-      <div className='flex md:flex-row gap-3 flex-col justify-between p-5'>
+    <footer className='max-h-[55dvh] synonym text-black flex flex-col gap-5 bg-[#F3DADF]'>
+      <div className='flex md:flex-row gap-5 flex-col justify-between p-5'>
         <div className='text-2xl md:text-3xl text-foreground'>
           <p>Gillian Nsisong Brendan</p>
           <p className='chillax'>CopyWriter & Brand consultant</p>
@@ -28,13 +29,13 @@ const Footer = () => {
           </a>
 
         </div>
-        <div id='footer' className='flex md:hidden gap-3'>
-          <Link to={'/'}>Home</Link>
-          <Link to={'/about-me'}>About Gillian</Link>
-          <Link to={'/my-work'}>Portfolio</Link>
-          <Link to={'/contact-me'}>Contact</Link>
-
-        </div>
+      </div>
+      <div id='footer' className='flex px-5 md:hidden gap-5'>
+        <Link to={'/'}>Home</Link>
+        <Link to={'/contact-me'}>Contact</Link>
+        <Link to={'/my-work'}>Portfolio</Link>
+        <Link to={'/about-me'}>About</Link>
+        <a href='#header'>Go-up </a>
       </div>
       <a 
        href='https://la-victoireportfolio.vercel.app/'

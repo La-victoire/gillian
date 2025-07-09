@@ -100,7 +100,7 @@ const About = () => {
       </p>
       </div>
     </section>
-    <section id="career" className='p-10 my-10 flex flex-col bg-accent text-muted-foreground justify-center items-center gap-5'>
+    <section id="career" className='md:p-10 p-3 my-10 flex flex-col bg-accent text-muted-foreground justify-center items-center gap-5'>
       <h2 className='text-black md:text-7xl text-center text-3xl chillax'>Professional Journey</h2>
       <h3 className='telma-light'>Key milestones that shaped my expertise</h3>
       <div className='mt-5'> 
@@ -109,21 +109,23 @@ const About = () => {
             <div className='flex flex-col'>
               <div className='p-2 bg-[#AE7DAC] relative -left-1.5 -top-5 rounded-full'/>
             </div>
-            <Card id="card" className='mb-10'>
-              <CardHeader className='flex md:flex-row flex-col gap-2 md:gap-5 chillax'>
-                <Badge className='bg-[#ae7dac]/70 border-0'>{year}</Badge>
-                <h4>{title}</h4>
-              </CardHeader>
-              <CardContent className='text-muted-foreground  flex flex-col md:gap-3'>
-                <p className='text-sky-500'>{company}</p>
-                <p>{summary}</p>
-                <div>
-                  {highlights.map((list) => (
-                    <li key={list}>{list}</li>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            <div className='relative overflow-hidden'>
+              <Card id="card" className='mb-10'>
+                <CardHeader className='flex md:flex-row flex-col gap-2 md:gap-5 chillax'>
+                  <Badge className='bg-[#ae7dac]/70 border-0'>{year}</Badge>
+                  <h4>{title}</h4>
+                </CardHeader>
+                <CardContent className='text-muted-foreground  flex flex-col md:gap-3'>
+                  <p className='text-sky-500'>{company}</p>
+                  <p>{summary}</p>
+                  <div>
+                    {highlights.map((list) => (
+                      <li key={list}>{list}</li>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         ))}
       </div>

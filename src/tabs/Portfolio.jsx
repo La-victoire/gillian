@@ -45,9 +45,12 @@ const Portfolio = () => {
       <div><Mouse className='animate-bounce duration-300' /></div>
     </section>
     <main>
-      <div id="project" className='grid md:grid-cols-2 grid-cols-1 p-10 gap-10'>
+      <div id="project" className='grid md:grid-cols-2 grid-cols-1 p-3 md:p-10 gap-10'>
         {projects.map((project) => (
-          <Link key={project.id} to={`/my-work/${project.id}`}>
+          <Link
+           className='relative overflow-hidden'
+           key={project.id} 
+           to={`/my-work/${project.id}`}>
             <Card id="card" className='h-[75dvh] pt-0 '>
               <div className={`bg-gradient-to-br ${project.color} h-1/2 pl-10 pt-5 flex justify-between rounded-t-xl`}>
                 <div>

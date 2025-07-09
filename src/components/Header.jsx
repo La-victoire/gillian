@@ -15,7 +15,7 @@ const Header = () => {
   
   return (
     <>
-      <nav className='flex h-[8dvh] justify-between px-5 items-center  bg-[#F3DADF] text-lg'>
+      <nav id='header' className='flex h-[8dvh] justify-between px-5 items-center  bg-[#F3DADF] text-lg'>
         <h1 className=' chillax flex md:justify-center md:text-2xl'>Gillian Nsisong Brendan</h1>
         <div className=' hidden md:flex gap-15 '>
           {tabs.map(({Name,path}) => (
