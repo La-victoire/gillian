@@ -1,12 +1,55 @@
-# React + Vite
+# Gillian Nsisong Brendan — Portfolio Website 💼✍️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, responsive personal brand site for **Gillian Nsisong Brendan**, a copywriter and brand consultant.  
+Built with precision, scroll-based motion, and a minimalist UI system.
 
-Currently, two official plugins are available:
+🔗 Live: [https://gillian-phi.vercel.app](https://gillian-phi.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ⚛️ **React** – UI architecture
+- 🎨 **Tailwind CSS** – Utility-first styling
+- 🧩 **ShadCN UI** – Component design system
+- 🌀 **GSAP** – Scroll-triggered animations
+- ☁️ **Vercel** – Deployment and hosting
+
+---
+
+## 📂 Structure
+
+/public └── og-image.jpg        # Meta preview image /src ├── components/         # ShadCN + custom components ├── sections/           # Hero, About, Contact, etc. ├── assets/             # Fonts and images └── App.jsx             # Main entry point
+
+---
+
+## 🔍 SEO & Meta
+
+- `<title>` and `<meta description>` optimized
+- Open Graph + Twitter Card tags
+- OG image: `public/image/copywriter.png`
+
+---
+
+## 📱 UX Notes
+
+- Scroll animations optimized
+- Layout is mobile-first and responsive
+- Font loading optimized for performance
+
+---
+
+## 🙋‍♀️ About Gillian
+
+Gillian is a brand consultant and conversion-focused copywriter helping businesses refine their messaging and attract ideal clients with clarity and impact.
+
+📧 Gilliannbrendan@gmail.com  
+📸 Instagram: [@gillianbrendan](https://instagram.com/gilliancopy)
+
+---
+
+## 🛠️ Developer
+
+Built by [@La_victoire](https://github.com/YourGitHubUsername)
+
+---
