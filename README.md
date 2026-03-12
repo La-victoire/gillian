@@ -9,7 +9,7 @@ Built with precision, scroll-based motion, and a minimalist UI system.
 
 ## 🚀 Tech Stack
 
-- ⚛️ **React** – UI architecture
+- ⚛️ **React** – UI architectures
 - 🎨 **Tailwind CSS** – Utility-first styling
 - 🧩 **ShadCN UI** – Component design system
 - 🌀 **GSAP** – Scroll-triggered animations
