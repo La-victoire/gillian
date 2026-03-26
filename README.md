@@ -1,7 +1,7 @@
 # Gillian Nsisong Brendan — Portfolio Website 💼✍️
 
 A clean,responsive personal brand site for **Gillian Nsisong Brendan**, a copywriter and brand consultant.  
-Built with precision, scroll-based motion, and a minimalist UI system.
+Built with precision, scroll-based animation motion, and a minimalist UI system.
 
 🔗 Live: [https://gillian-phi.vercel.app](https://gillian-phi.vercel.app)
 
