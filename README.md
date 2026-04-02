@@ -19,7 +19,12 @@ Built with precision, scroll-based animation motion, and a minimalist UI system.
 
 ## 📂 Structure
 
-/public └── og-image.jpg        # Meta preview image /src ├── components/         # ShadCN + custom components ├── sections/           # Hero, About, Contact, etc. ├── assets/             # Fonts and images └── App.jsx             # Main entry point
+/public 
+└── og-image.jpg        # Meta preview image /src 
+├── components/         # ShadCN + custom components 
+├── sections/           # Hero, About, Contact, etc. 
+├── assets/             # Fonts and images 
+└── App.jsx             # Main entry point
 
 ---
 
